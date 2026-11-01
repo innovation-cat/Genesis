@@ -25,12 +25,9 @@ const presetResponse=await fetch(new URL('./video-presets.json',import.meta.url)
 if(!presetResponse.ok)throw new Error('画质配置加载失败，请刷新网页。');
 export const qualities=(await presetResponse.json()).qualities;
 export const templates = [
-  {id:'pythagoras',name:'看得见的勾股定理',tag:'数学 · 几何',art:'a² + b² = c²',palette:'forest',style:'math',description:'用面积与几何动画，让抽象的公式变得直观。',prompt:'用中文讲解勾股定理：从直角三角形出发，用三个正方形的面积说明 a²+b²=c²，再用 3、4、5 的例子验证。画面简洁，步骤循序渐进。'},
-  {id:'fourier',name:'用圆，画出一切',tag:'数学 · 傅里叶',art:'∑ sin(nωt)',palette:'sand',style:'math',description:'将多个旋转向量相加，逐步构建周期波形。',prompt:'用中文直观讲解傅里叶级数：用一个旋转向量对应正弦波，再叠加三个不同频率的正弦波，展示如何逼近方波。标注每个频率，先简单后复杂。'},
-  {id:'neural',name:'神经网络如何学习',tag:'AI · 神经网络',art:'● → ◉ → ●',palette:'blue',style:'blueprint',description:'把输入、权重与误差，串联成一个学习过程。',prompt:'用中文讲解一个简单神经网络如何学习。展示 3 个输入节点、4 个隐藏节点、2 个输出节点，用动画表示前向传播、损失计算与反向更新权重。'},
-  {id:'linear',name:'矩阵，让空间变形',tag:'数学 · 线性代数',art:'[ A ] · x',palette:'olive',style:'math',description:'观察坐标网格与基向量，理解线性变换。',prompt:'用中文讲解二维矩阵与线性变换。从单位网格和两个基向量出发，依次展示缩放、剪切和旋转，说明矩阵的列向量如何决定基向量的位置。'},
-  {id:'sort',name:'排序算法的小剧场',tag:'编程 · 算法',art:'▂ ▅ ▁ ▇ ▃',palette:'clay',style:'minimal',description:'让数组中的元素动起来，看懂冒泡排序。',prompt:'用中文讲解冒泡排序。用 5 根不同高度的柱子表示数组 [5, 2, 4, 1, 3]，用颜色高亮比较的两个元素，演示交换和每轮确定的最大值。'},
-  {id:'orbit',name:'为什么行星绕着太阳转',tag:'物理 · 运动',art:'☉ ⟲ ◦',palette:'night',style:'math',description:'用速度向量与引力方向，解释轨道的形成。',prompt:'用中文直观讲解行星轨道。展示太阳与一颗行星，画出指向太阳的引力向量和切线方向的速度向量，说明二者结合如何形成持续绕行。避免长段落文字。'},
+  {id:'binary-search',label:'⌕ 二分查找',name:'二分查找：每次排除一半',tag:'编程 · 算法',art:'[ 1 … 15 ]',palette:'blue',style:'blueprint',description:'用有序数组展示查找范围如何逐步缩小。',prompt:'用动画讲解二分查找。在有序数组 [1, 3, 5, 7, 9, 11, 13, 15] 中查找数字 11，清楚标出左右边界和中点。逐步展示比较、排除一半范围和找到目标的过程，最后说明为什么它比逐个查找更高效。使用简短标签，避免堆叠文字。'},
+  {id:'solar-orbits',label:'☉ 太阳系轨道',name:'太阳系里的公转节奏',tag:'科学 · 天文',art:'☉ ⟲ ◦',palette:'forest',style:'math',description:'观察地球与火星的简化轨道和不同公转节奏。',prompt:'用简化动画展示太阳、地球和火星的公转。太阳位于中央，用不同颜色标出地球、火星及各自的圆形示意轨道，展示两颗行星不同的公转节奏，并用一条从太阳指向行星的连线帮助观察位置变化。明确这是教学示意，尺寸、距离和时间不按真实比例。画面清晰，不增加其他天体。'},
+  {id:'compound-growth',label:'↗ 复利增长',name:'复利：增长也会继续增长',tag:'数学 · 增长',art:'1.1ⁿ',palette:'clay',style:'minimal',description:'用逐年柱状图比较单利与复利的增长过程。',prompt:'用动画解释复利增长。假设初始数值为 1000，固定年增长率为 10%，观察 5 年变化。先展示第一年的计算，再逐年把增长部分加入下一年的计算基数，绘制清楚的柱状图。与每年固定增加 100 的单利作对比，标明年份和数值，说明两种计算方式为何逐渐拉开差距。'},
 ];
 export const stages = [
   {id:'outline',name:'内容规划',icon:'file'}, {id:'storyboard',name:'分镜设计',icon:'layers'},

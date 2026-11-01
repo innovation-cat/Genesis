@@ -137,8 +137,8 @@ export const translations = {
   "Manim · 程序渲染":"Manim · Code rendering", "扩散 / 流匹配 · 界面预览":"Diffusion / flow matching · UI preview", "程序 × 生成模型 · 界面预览":"Code × generative models · UI preview",
   "渲染引擎":"Renderer", "生成模型":"Generation model", "选择渲染引擎":"Choose a renderer", "选择生成模型":"Choose a generation model", "已接入":"Connected", "待接入":"Not connected", "引擎尚未接入":"Renderer not connected", "界面语言":"Interface language", "请先选择渲染引擎。":"Please select a renderer first.", "尚未接入。此工作区仅供预览，不会改用 Manim 执行。":" is not connected. This workspace is a preview; it will not run through Manim instead.",
   "把复杂的想法，讲清楚。":"Make complex ideas clear.", "代码控制每一处结构与运动，":"Code shapes every structure and movement,", "让知识、逻辑和创意看得见。":"making knowledge, logic and ideas visible.", "描述你的想法":"Describe your idea", "创作内容":"Creative brief", "让代码把抽象变具体":"Make the abstract tangible with code", "用代码，让抽象变得具体":"Make the abstract tangible with code",
-  "例如：用直观的几何动画，解释勾股定理。\n展示面积如何变化，让每一步推导都清晰可见。":"For example: explain the Pythagorean theorem with geometric animation.\nShow how the areas change, making every step easy to follow.",
-  "试试":"Try", "△ 勾股定理":"△ Pythagorean theorem", "∿ 傅里叶级数":"∿ Fourier series", "⌘ 神经网络":"⌘ Neural network", "画面设置":"Video settings", "新任务使用当前设置":"Applies to new creations", "目标时长":"Target duration", "画面质量":"Output quality",
+  "例如：用动画讲解二分查找。\n逐步缩小查找范围，让每一步比较都清晰可见。":"For example: explain binary search with animation.\nNarrow the search range step by step, making every comparison clear.",
+  "试试":"Try", "⌕ 二分查找":"⌕ Binary search", "☉ 太阳系轨道":"☉ Solar orbits", "↗ 复利增长":"↗ Compound growth", "画面设置":"Video settings", "新任务使用当前设置":"Applies to new creations", "目标时长":"Target duration", "画面质量":"Output quality",
   "快速 480p":"Fast 480p", "标准 720p":"Standard 720p", "高清 1080p":"High 1080p", "16:9 横屏":"16:9 landscape", "音画逐镜头对齐":"Shot-aligned audio and animation", "视觉风格":"Visual style", "数学之美":"Mathematical elegance", "蓝图解析":"Blueprint", "极简叙事":"Minimal narrative", "背景":"Background",
   "新任务与离线测试均生效，已有视频保持原样":"Applies to new jobs and offline tests; existing videos keep their appearance", "画面语言":"On-screen language", "配音语言":"Narration language", "中文":"Chinese", "中文解说":"Chinese narration", "无配音":"No narration", "将解说字幕嵌入画面":"Burn narration subtitles into the video", "AI 合成配音 · 支持独立音轨与 SRT / VTT 字幕。":"AI-generated narration · Separate audio and SRT / VTT subtitles.",
   "生成我的视频":"Generate video", "本地隔离渲染 · 可编辑源码 · 使用你自己的模型":"Local isolated rendering · Editable code · Your own model", "创作预览":"Creation preview", "视频预览":"Video preview", "内容分镜":"Storyboard", "源码":"Source", "生成流程":"Generation workflow", "最近创作":"Recent creations", "查看全部":"View all",
@@ -192,9 +192,9 @@ const chinesePattern=new RegExp(chineseFragments.map(escapeRegExp).join('|'),'g'
 const englishFragments=[...englishToChinese.keys()].filter(key=>key.length>=8).sort((a,b)=>b.length-a.length);
 const englishPattern=new RegExp(englishFragments.map(escapeRegExp).join('|'),'g');
 const languageKey='formaweave.ui-language';
-function normalizeLanguage(language){return language==='zh-CN'?'zh-CN':'en';}
-let language='en';
-try {const saved=globalThis.localStorage?.getItem(languageKey);language=normalizeLanguage(saved==='en'||saved==='zh-CN'?saved:saved?JSON.parse(saved):'en');} catch {language='en';}
+function normalizeLanguage(language){return language==='en'?'en':'zh-CN';}
+let language='zh-CN';
+try {const saved=globalThis.localStorage?.getItem(languageKey);language=normalizeLanguage(saved==='en'||saved==='zh-CN'?saved:saved?JSON.parse(saved):'zh-CN');} catch {language='zh-CN';}
 export function getUILanguage(){return language;}
 
 function dynamicText(text,locale){

@@ -163,8 +163,8 @@ function renderStudio() {
         <div class="panel-heading"><h2 class="panel-title" id="compose-title">${icon('code')}描述你的想法</h2><span class="quiet-label">CODE → VIDEO</span></div>
         <form id="create-form">
           <label class="field-label" for="topic">创作内容<span class="hint">让代码把抽象变具体</span></label>
-          <div class="prompt-wrap"><textarea id="topic" name="topic" maxlength="4000" required placeholder="例如：用直观的几何动画，解释勾股定理。\n展示面积如何变化，让每一步推导都清晰可见。">${esc(state.draft.topic)}</textarea><div class="prompt-bottom"><span>${icon('code')}用代码，让抽象变得具体</span><span id="char-count">${state.draft.topic.length} / 4000</span></div></div>
-          <div class="suggestions"><span>试试</span>${templates.slice(0,3).map(t=>`<button type="button" class="suggestion" data-template="${t.id}">${t.id==='pythagoras'?'△ 勾股定理':t.id==='fourier'?'∿ 傅里叶级数':'⌘ 神经网络'}</button>`).join('')}</div>
+          <div class="prompt-wrap"><textarea id="topic" name="topic" maxlength="4000" required placeholder="例如：用动画讲解二分查找。\n逐步缩小查找范围，让每一步比较都清晰可见。">${esc(state.draft.topic)}</textarea><div class="prompt-bottom"><span>${icon('code')}用代码，让抽象变得具体</span><span id="char-count">${state.draft.topic.length} / 4000</span></div></div>
+          <div class="suggestions"><span>试试</span>${templates.map(t=>`<button type="button" class="suggestion" data-template="${esc(t.id)}">${esc(t.label)}</button>`).join('')}</div>
           <div class="field-label settings-label">画面设置<span class="hint">新任务使用当前设置</span></div>
           <div class="parameter-row"><div><label for="duration">目标时长</label><select id="duration" name="duration">${[1,2,3,5].map(n=>`<option value="${n}" ${n===state.draft.duration?'selected':''}>约 ${n} 分钟</option>`).join('')}</select></div><div><label for="quality">画面质量</label><select id="quality" name="quality">${qualities.map(q=>`<option value="${q.label}" ${q.label===state.draft.quality?'selected':''}>${q.label} · ${q.width}×${q.height} · ${q.fps} fps</option>`).join('')}</select></div></div>
           <div class="aspect-info"><span>${icon('expand')}16:9 横屏</span><span>${icon('volume')}音画逐镜头对齐</span></div>
